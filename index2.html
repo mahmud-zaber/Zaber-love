@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enchanted Love Garden - For Rizin ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a8e6cf, #dcedc8, #ffd3a5);
+            overflow-x: hidden;
+            color: #333;
+        }
+        .garden {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+        .path {
+            position: absolute;
+            width: 100px;
+            height: 10px;
+            background: #8bc34a;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .path:hover {
+            background: #4caf50;
+        }
+        .flower {
+            position: absolute;
+            font-size: 2em;
+            color: #ff6b6b;
+            cursor: pointer;
+            animation: bloom 2s ease-in-out infinite;
+        }
+        @keyframes bloom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .butterfly {
+            position: absolute;
+            font-size: 1.5em;
+            color: #9c27b0;
+            cursor: pointer;
+            animation: flutter 3s ease-in-out infinite;
+        }
+        @keyframes flutter {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-10px) rotate(-5deg); }
+        }
+        .love-tree {
+            position: absolute;
+            bottom: 20px;
+            font-size: 4em;
+            color: #795548;
+            transform: scale(0.5);
+            transition: transform 0.5s;
+        }
+        .message {
+            position: absolute;
+            background: rgba(255,255,255,0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: none;
+            font-style: italic;
+            color: #ff6b6b;
+        }
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #ff5252;
+        }
+        #confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="garden">
+        <h1 class="title">Welcome to Our Enchanted Love Garden, Rizin! 🌸❤️</h1>
+        <p>Click around to explore and discover my love for you. Let's make some magic!</p>
+        <button id="cheerBtn">Cheer Me Up! 🎉</button>
+
+        <!-- Garden Elements -->
+        <div class="path" id="path1" style="top: 40%; left: 20%;"></div>
+        <div class="path" id="path2" style="top: 60%; left: 50%;"></div>
+        <div class="path" id="path3" style="top: 30%; left: 70%;"></div>
+
+        <div class="flower" id="flower1" style="top: 50%; left: 30%;">🌹</div>
+        <div class="flower" id="flower2" style="top: 70%; left: 60%;">🌷</div>
+        <div class="flower" id="flower3" style="top: 20%; left: 80%;">🌻</div>
+
+        <div class="butterfly" id="butterfly1" style="top: 35%; left: 40%;">🦋</div>
+        <div class="butterfly" id="butterfly2" style="top: 55%; left: 75%;">🦋</div>
+
+        <div class="love-tree" id="loveTree">🌳</div>
+
+        <!-- Messages -->
+        <div class="message" id="msg1">You're the flower that makes my garden bloom! 🌹 I love your smile.</div>
+        <div class="message" id="msg2">Every path we take together leads to happiness. You're my adventure! 🗺️</div>
+        <div class="message" id="msg3">Like this butterfly, my love for you is free and beautiful. Keep shining! 🦋</div>
+        <div class="message" id="msg4">Our love tree grows stronger every day. You're my roots and my branches. 🌳</div>
+        <div class="message" id="msg5">Surprise! You're amazing, and I'm so lucky to have you. Cheer up, my love! 🎊</div>
+    </div>
+
+    <div id="confetti"></div>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav"> <!-- Placeholder: Replace with uplifting romantic music -->
+    </audio>
+
+    <script>
+        const cheerBtn = document.getElementById('cheerBtn');
+        const paths = document.querySelectorAll('.path');
+        const flowers = document.querySelectorAll('.flower');
+        const butterflies = document.querySelectorAll('.butterfly');
+        const loveTree = document.getElementById('loveTree');
+        const messages = document.querySelectorAll('.message');
+        const bgMusic = document.getElementById('bgMusic');
+        const confettiContainer = document.getElementById('confetti');
+
+        let treeScale = 0.5;
+
+        // Function to show random message
+        function showMessage(msgId) {
+            messages.forEach(msg => msg.style.display = 'none');
+            const msg = document.getElementById(msgId);
+            msg.style.display = 'block';
+            msg.style.top = Math.random() * 60 + 20 + '%';
+            msg.style.left = Math.random() * 60 + 20 + '%';
+            gsap.from(msg, { opacity: 0, scale: 0.5, duration: 0.5 });
+            setTimeout(() => msg.style.display = 'none', 3000);
+        }
+
+        // Path clicks
+        paths.forEach((path, index) => {
+            path.addEventListener('click', () => {
+                showMessage(`msg${index + 1}`);
+                gsap.to(loveTree, { scale: treeScale += 0.1, duration: 0.5 });
+            });
+        });
+
+        // Flower clicks
+        flowers.forEach((flower, index) => {
+            flower.addEventListener('click', () => {
+                gsap.to(flower, { scale: 1.5, duration: 0.3, yoyo: true, repeat: 1 });
+                showMessage('msg1'); // Random cheer
+            });
+        });
+
+        // Butterfly clicks
+        butterflies.forEach(butterfly => {
+            butterfly.addEventListener('click', () => {
+                gsap.to(butterfly, { x: 100, duration: 1, ease: "power2.out" });
+                showMessage('msg3');
+            });
+        });
+
+        // Cheer button
+        cheerBtn.addEventListener('click', () => {
+            bgMusic.play();
+            // Confetti burst
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear`;
+                confettiContainer.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+            showMessage('msg5');
+            gsap.to(loveTree, { scale: treeScale += 0.2, duration: 0.5 });
+        });
+
+        // CSS for confetti fall
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to { transform: translateY(100vh) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
