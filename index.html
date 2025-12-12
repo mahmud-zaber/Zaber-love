@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Romantic Album - For My Wife</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #FFB6C1, #FFD700, #87CEEB);
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 3em;
+            color: #FF69B4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            color: #FF69B4;
+            font-size: 2em;
+            animation: floatHearts 10s linear infinite;
+        }
+        @keyframes floatHearts {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        .story {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .photo {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .photo:hover {
+            transform: scale(1.05);
+        }
+        .photo img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        .photo:hover img {
+            opacity: 0.8;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        audio {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2em; }
+            .gallery { grid-template-columns: 1fr; }
+            .photo img { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="heartsContainer"></div>
+    <header>
+        <h1>Our Love Story Album</h1>
+        <p>Dedicated to my amazing wife – every moment with you is a treasure.</p>
+    </header>
+    <section class="story">
+        <h2>Our Story</h2>
+        <p>From the day we met, you've brought light into my life. Here's a glimpse of our beautiful journey together. [Babeee. From the first day u saw me and then we started talking with each other and came this far. Amdr lovee story etoi boro je ami jdi ekhn likha strt kori. next week e sesh krte prbo kina i wonder.. But ajke ektu short e likhi. Mone ase Jannn ? ami jokhon tmk first propose krsilam.. 3rd aug er age.. U thought it was just a for fun… u didn’t realize je ami asholei tmk propose krsi.. And in 3rd august i proposed u again and u took it seriously and tmi ek rat amr kache time chaiso.. Babeee uk what ami srsly onkk tension ar fear e silam je tmi amk choose krba or not.. Por er din dekhi u accepted my proposal and committed me to become mine forever.💗❤️. Tmi janooo ami onkkkk khusi hoisilam.. Cuz u’re the one i am searching for.. Tmi jano jann. Amdr porichoy haoar age thekei ami reel dekhtam je 20th birthday er agei soulmate er sathe dekha hye jay, ami namaz poreo dua krtam jate amaro amr soulmate er sathe 20th birthday er agei dekha hye jay. And guess what i got my soulmate before my 19th birthday.. And after this amdr relation strt hoilo.. Kichu rat gelo jhogra ar overthinking e.. Bt amra kokhono jhamela solve na kre ghumai nai. Shob somoy duijon duijon ke comfort diye ghumai porsi… Tmi amk comfort dita ami tmk… Ar amr ei dustu babyy ta koto tension ar overthink krse . But ur husband me. I reassured u everytime. Ei moment gula jannn amr kache best.. Amr ekhono mone ase je Ozz cafe te boshe tmi amk haranor voy e amk dhre kadso picchi ekta baccha er moto..Ummmmmmmmmaaaaaahhhhhhhhh. That time i was holding u tighter in my chest.. I reassured u jannn je. U will never lose me, my love and care for u will never change, i will be yours forever, u will be mine forever, we will be married, and have children, and grow old together. 💗❤️.. Ar amr Wifeee ajke to short e likhlam onkk kichui aro jinish ase bolar bt oigula bolte gele beleive me je 2 week bosheo sesh krte prbo na. 
+I want to Say je, 
+If I had five different lives instead of one, then instead of one town , i could have born in a family of five different one, and i would have grown up to have five different careers. And in every one of those live, I would have fallen in lovee with u 5 different times, I would marry u 5 in my 5 different lives… U’re My wifey ❤️💗. I loveee u soo muchhh my wifeeee, my cute little babyy monster, my shonamoni, my babyy, my jannn, my kolija, my baccha 🫂🫂
+]</p>
+        <blockquote>"Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day." – Your Husband Zaber</blockquote>
+    </section>
+    <section class="gallery">
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="1.jpg" alt="Romantic Moment 1">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="2.jpg" alt="Romantic Moment 2">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="3.jpg" alt="Romantic Moment 3">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="4.jpg" alt="Romantic Moment 4">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="5.jpg" alt="Romantic Moment 5">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="6.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="7.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="8.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="9.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="10.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="11.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="12.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="13.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="14.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="15.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="16.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="17.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="18.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="19.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="20.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="21.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="22.jpg" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="23.JPG" alt="Romantic Moment 6">
+        </div>
+        <div class="photo" onclick="openLightbox(this)">
+            <img src="24.JPG" alt="Romantic Moment 6">
+        </div>
+        <!-- Add more <div class="photo"> blocks as needed -->
+    </section>
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImg" src="" alt="Full Size">
+    </div>
+    <footer>
+        <p>Made with love for you. Forever yours.</p>
+    </footer>
+    <audio id="bgMusic" loop>
+        <source src="123.mp3" type="audio/mpeg">
+        <!-- Fallback: Replace with your preferred romantic music URL -->
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        // Generate floating hearts
+        const heartsContainer = document.getElementById('heartsContainer');
+        const bgMusic = document.getElementById('bgMusic');
+        bgMusic.play();
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 10 + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Lightbox functionality
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            document.getElementById('lightboxImg').src = imgSrc;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
